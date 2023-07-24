@@ -1,0 +1,23 @@
+namespace rust_lib {
+    string generate_qr_code_svg([ByRef]string text);
+
+    [Throws=QrError]
+    QrCode encode_text([ByRef]string text, QrCodeEcc ecl);
+};
+
+enum QrCodeEcc {
+	"Low",
+	"Medium",
+	"Quartile",
+	"High",
+};
+
+interface QrCode {
+    i32 size();
+    boolean get_module(i32 x, i32 y);
+};
+
+[Error]
+interface QrError {
+    ErrorMessage(string error_text);
+};

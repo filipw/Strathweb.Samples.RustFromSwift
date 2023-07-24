@@ -1,0 +1,16 @@
+[package]
+name = "rust-lib"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["lib", "cdylib", "staticlib"]
+
+[dependencies]
+qrcodegen = "1.8.0"
+thiserror = "1.0"
+uniffi = { version = "0.23.0", features=["build"] }
+
+[build-dependencies]
+uniffi_build = "0.23.0"
+uniffi_bindgen = "0.23.0"
