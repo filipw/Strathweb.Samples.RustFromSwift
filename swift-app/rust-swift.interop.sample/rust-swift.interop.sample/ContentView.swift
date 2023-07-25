@@ -8,15 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
-    let qrCode: QrCode
-    init() {
-        qrCode = try! encodeText(text: "https://strathweb.com", ecl: .medium)
-    }
+    @State var qrCode: QrCode?
+    @State var text: String = "https://strathweb.com"
     
     var body: some View {
-        QrCodeView(qrCode: qrCode)
-            .aspectRatio(1, contentMode: .fit)
-            .padding()
+        VStack {
+            HStack {
+                TextField("Enter the URL", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(maxWidth: .infinity)
+                Button("Generate QR") {
+                    do {
+                        print(text)
+                        qrCode = try encodeText(text: text, ecl: .medium)
+                    } catch {
+                        print(error)
+                    }
+                }
+            }.padding()
+            
+            Spacer()
+            
+            if let qrCode = qrCode {
+                QrCodeView(qrCode: qrCode)
+                    .aspectRatio(1, contentMode: .fit)
+                    .padding()
+                
+                Spacer()
+            }
+        }
     }
 }
 

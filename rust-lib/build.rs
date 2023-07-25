@@ -1,6 +1,6 @@
 use std::process::Command;
 
-use uniffi_bindgen::{generate_bindings};
+use uniffi_bindgen::generate_bindings;
 
 fn main() {
     let udl_file = "./src/rust-lib.udl";
