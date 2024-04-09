@@ -88,3 +88,4 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+swift-app/rust-swift.interop.sample/rust_lib_framework.xcframework
